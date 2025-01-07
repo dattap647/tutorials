@@ -25,12 +25,15 @@ const App = () => {
   }, [word, size, bgColor]);
 
   const handleTextChange = (e) => {
-    if (e.target.value.trim() !== " ") {
+    if (e.target.value.trim() !== "") {
       setTemp(e.target.value);
     }
   };
 
-  const handleOnClick = () => {
+  const handleGenerate = (e) => {
+    // Prevent form submission behavior
+    e.preventDefault(); 
+    
     if (temp.trim() !== "") {
       setWord(temp);
     }
@@ -46,9 +49,9 @@ const App = () => {
 
   return (
     <div style={appStyle}>
-      <h1>QR Code Generater</h1>
+      <h1>QR Code Generator</h1>
 
-      <div>
+      <form onSubmit={handleGenerate}>
         <div>
           <Input
             type="text"
@@ -56,13 +59,12 @@ const App = () => {
             style={inputStyle}
             handleOnChange={handleTextChange}
           />
-          <Button text="Generate" handleOnClick={handleOnClick} />
+          <Button text="Generate" type="submit" />
         </div>
 
         <div style={rowContainerStyle}>
           <div style={rowStyle}>
-            <h5>Backgroud Color:</h5>
-
+            <h5>Background Color:</h5>
             <div style={boxStyles}>
               <div style={innerBoxStyles}>
                 <Input
@@ -90,11 +92,11 @@ const App = () => {
               handleOnChange={handleDimensionChange}
             />
             <h5>
-              {size}px x{size}px
+              {size}px x {size}px
             </h5>
           </div>
         </div>
-      </div>
+      </form>
 
       <div>
         <img
@@ -103,7 +105,7 @@ const App = () => {
             backgroundColor: `#${bgColor}`,
           }}
           src={qrCode}
-          alt=""
+          alt="QR Code"
         />
       </div>
       <a href={qrCode} download="QRCode">

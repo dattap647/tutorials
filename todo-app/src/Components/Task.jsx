@@ -9,7 +9,7 @@ const Task = (props) => {
       style={{
         ...taskStyles,
         textDecoration: task.completed ? "line-through" : "none",
-        opacityacity: task.completed ? 0.5 : 1,
+        opacity: task.completed ? 0.5 : 1,
       }}
     >
       {task.text}

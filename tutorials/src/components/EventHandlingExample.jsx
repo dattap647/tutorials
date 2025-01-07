@@ -1,4 +1,5 @@
 function EventHandlingExample() {
+
   const handleClick = () => {
     alert("Button Clicked!");
   };
@@ -6,7 +7,7 @@ function EventHandlingExample() {
   return (
     <div>
       <h2>Handling Events Example</h2>
-      <button onClick={handleClick}>Click Me</button>
+      <button onClick={handleClick}>Click Me Here</button>
     </div>
   );
 }
